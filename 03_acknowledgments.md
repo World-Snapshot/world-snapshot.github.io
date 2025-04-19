@@ -1,3 +1,10 @@
 ## Acknowledgments
 
 We thank all our colleagues and collaborators for their valuable feedback and discussions. This work was supported in part by NSF grants, and we gratefully acknowledge the support of NVIDIA with the donation of GPUs used for this research. Special thanks to the research community for their constructive feedback during the development of this work.
+
+
+**Additional Declaration & To the Media:** Our work is an exploration aimed at an ideal world model, following the principles of "conformal symmetry + encoding all information to the boundary", using our defined Wave Generative Models (or Wave-based Model) as the primary structure.
+
+- All work that conforms to our definition, approximation, or derivative with the goal of exploring ideal world models will be called World Snapshot Model series/family. Just as deep learning evolved from machine learning yet is different. We are intentionally establishing an independent research field/area distinct from all existing claimed world models (video generation, hybrid Agents, VLMs, robotics, and new image generation architectures, etc). So we will be the "World Snapshot Model" research area. *Interactive physical image and scene reconstruction, are our prototype work, although they typically only meet 3/9 of our standards.*
+- 2-4D models using our defined quantum wave generation mechanism (such as recording 3D information wave space), with the goal of exploring generative models, will be called or belong to Wave Generative Models (or Wave-based Model).
+- The process of generating content not from random pixels/noise, but through meaningful information tensors (shapes, spatial information, planar structures), initializing a start with multi-dimensional information (It is generally more than the original model, for example, using image structures with 3D information to assist ordinary image generation models), is called "Sen Fang Initialization", which can be applied to a broader range of AI models. Just as an internal combustion engine needs an igniter, "Sen Fang Initialization" generally uses lighter techniques to generate a meaningful initial input.
