@@ -236,7 +236,7 @@
         /* Markdown and HTML section styles */
         .markdown-section, .html-section {
             margin: 40px 0;
-            scroll-margin-top: 60px;
+            scroll-margin-top: 70px;
         }
 
         .markdown-section h1, .html-section h1 {
@@ -246,6 +246,7 @@
             border-bottom: 1px solid #a2a9b1;
             color: #000;
             font-family: 'Linux Libertine','Georgia','Times',serif;
+            position: relative;
         }
 
         .markdown-section h2, .html-section h2 {
@@ -254,12 +255,49 @@
             padding-bottom: 0.2em;
             border-bottom: 1px solid #c8ccd1;
             color: #162441;
+            position: relative;
         }
 
         .markdown-section h3, .html-section h3 {
             font-size: 1.2em;
             margin: 0.8em 0;
             color: #162441;
+            position: relative;
+        }
+
+        /* 标题锚点链接样式 */
+        .markdown-section .header-link,
+        .html-section .header-link {
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.2s;
+            text-decoration: none;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .markdown-section h1:hover .header-link,
+        .markdown-section h2:hover .header-link,
+        .markdown-section h3:hover .header-link,
+        .markdown-section h4:hover .header-link,
+        .markdown-section h5:hover .header-link,
+        .markdown-section h6:hover .header-link,
+        .html-section h1:hover .header-link,
+        .html-section h2:hover .header-link,
+        .html-section h3:hover .header-link,
+        .html-section h4:hover .header-link,
+        .html-section h5:hover .header-link,
+        .html-section h6:hover .header-link {
+            opacity: 1;
+        }
+
+        .markdown-section .header-link:hover,
+        .html-section .header-link:hover {
+            color: #3366cc;
+            text-decoration: none;
         }
 
         .markdown-section p, .html-section p {
@@ -435,8 +473,8 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div id="title">
+    <div class="container" id="title">
+        
             <h1 class="title">World Snapshot Model and Wave-based Model:<br>Unifying Digital Reality at the Pixel Level</h1>
             
             <div class="authors">
@@ -474,10 +512,10 @@
                 </a>
             </div>
 
-        </div>
-
 
         <div class="mixed-content">
+
+            <section id="teaser" class="html-section">
 
             <details>
                 <summary id="rotating-summary">TLDR (1/15): Requirements for implementing an ideal world model: 1. Encode all information to the boundary. 2. Conform to conformal symmetry. Follow this rule, video (2D+time) generation models and world (3D+time) generation models will be equivalent.</summary>
@@ -523,14 +561,13 @@
                 setInterval(rotateSummary, 10000);
               </script>
 
-            <div id="teaser" class="video-container">
                 <!--
                 <video autoplay muted loop playsinline>
                     <source src="./static/videos/teaser.mp4" type="video/mp4">
                 </video>
                 -->
                 <img src="./static/videos/vid_cover2.png" alt="ControlWave Cover Image" style="max-width: calc(100% - 10px); height: auto;">
-            </div>
+            </section>
 
             <!-- Teaser Section (Markdown) -->
             <section id="teaser" class="markdown-section"></section>
@@ -651,6 +688,44 @@
                     }
                 }
             }
+            
+            // 为标题添加锚点链接
+            addHeaderLinks();
+
+            // Smooth scrolling for sidebar navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        // 临时更新URL但不触发跳转
+                        history.replaceState(null, null, `#${targetId}`);
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // 延迟移除锚点，让跳转完成
+                        setTimeout(() => {
+                            history.replaceState(null, null, window.location.pathname);
+                        }, 200);
+
+                        // If sidebar is not locked, hide it after navigation
+                        if (!sidebar.classList.contains('locked')) {
+                            sidebar.classList.remove('active');
+                        }
+                    }
+                });
+            });
+
+            // 检查URL中的锚点并跳转
+            setTimeout(() => {
+                if (window.location.hash) {
+                    const element = document.getElementById(window.location.hash.substring(1));
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }, 100);
         }
 
         // Initialize page
@@ -696,29 +771,47 @@
             });
         });
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    const offset = 60;
-                    const targetPosition = targetElement.offsetTop - offset;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
 
-                    // If sidebar is not locked, hide it after navigation
-                    if (!sidebar.classList.contains('locked')) {
-                        sidebar.classList.remove('active');
-                    }
-                }
+        // 为标题添加锚点链接的函数
+        function addHeaderLinks() {
+            // 生成slug的函数
+            function generateSlug(text) {
+                return text
+                    .toLowerCase()
+                    .replace(/[^\w\s-]/g, '') // 移除特殊字符
+                    .replace(/\s+/g, '-')     // 空格替换为连字符
+                    .replace(/-+/g, '-')      // 多个连字符合并为一个
+                    .trim('-');               // 移除首尾连字符
+            }
+
+            // 为所有标题添加ID和链接
+            const headers = document.querySelectorAll('.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6, .html-section h1, .html-section h2, .html-section h3, .html-section h4, .html-section h5, .html-section h6');
+            
+            headers.forEach(header => {
+                const text = header.textContent;
+                const slug = generateSlug(text);
+                
+                // 设置ID
+                header.id = slug;
+                
+                // 创建链接元素
+                const link = document.createElement('a');
+                link.href = `#${slug}`;
+                link.className = 'header-link';
+                link.innerHTML = '#';
+                
+                // 添加点击事件处理
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    history.pushState(null, null, `#${slug}`);
+                    header.scrollIntoView({ behavior: 'smooth' });
+                });
+                
+                // 将链接插入到标题中
+                header.appendChild(link);
             });
-        });
+        }
+
     </script>
 </body>
 </html>
