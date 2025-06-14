@@ -730,6 +730,10 @@
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', () => {
+            // 强制跳转到title位置
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'auto' });
+            }, 100);
             // Load and render markdown content
             loadAndRenderContent();
             
