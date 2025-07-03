@@ -6,4 +6,4 @@ The World Snapshot Model achieves: 1. By creating a wave space, it enables the e
 
 Our model demonstrates good performance in semantic consistency, human ID consistency, 4D spatiotemporal consistency, physical realism, degree of control in conditional generation, generation speed, image-to-video generation, and 3D reconstruction capabilities. Our model can play a forward-looking role in film production, world generation and understanding, XR content creation, and AI animation engines.
 
-*More [TLDRs](https://world-snapshot.github.io/doc/index.html?page=S6_materials/02_guideline.md#tldr-of-project-page) can explain our design principles.*
+*More [TLDRs](https://world-snapshot.github.io/doc/index.html?page=S6_materials/02_guideline.md#tldr-of-project-page) can explain our design principles. More our summary/contribution at [here](https://world-snapshot.github.io/doc/index.html#summary).*
