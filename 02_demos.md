@@ -1,130 +1,303 @@
 ## DEMOs
 
+<style>
+/* Video Gallery Styles */
+.video-gallery {
+  max-width: 100%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gallery-tabs-container {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.gallery-tab {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+.gallery-tab.active {
+  background: #007bff;
+  color: white;
+}
+
+.gallery-content {
+  position: relative;
+}
+
+.gallery-prev,
+.gallery-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 20px 12px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 4px;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.gallery-prev:hover,
+.gallery-next:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.gallery-prev {
+  left: -40px;
+}
+
+.gallery-next {
+  right: -40px;
+}
+
+.videos-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 5%;
+  padding: 0 50px;
+  overflow: hidden;
+}
+
+.video-item {
+  width: 30%;
+  display: none;
+}
+
+.video-item.active {
+  display: block;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 100%;
+  background: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-description {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+</style>
+
 ***<center>"Unify Computer Vision, Expand Computer Vision, Transcend Computer Vision."</center>***
 
 ### Best Practices
 
+<!-- Best Practices Gallery -->
+<div class="video-gallery" data-gallery-id="best-practices">
+<div class="gallery-tabs-container">
+<button class="gallery-tab" data-video="0">Example 1</button>
+<button class="gallery-tab" data-video="1">Example 2</button>
+<button class="gallery-tab" data-video="2">Example 3</button>
+<button class="gallery-tab" data-video="3">Example 4</button>
+<button class="gallery-tab" data-video="4">Example 5</button>
+<button class="gallery-tab" data-video="5">Example 6</button>
+</div>
+<div class="gallery-content">
+<button class="gallery-prev">‹</button>
+<div class="videos-container">
+<div class="video-item" data-index="0">
+<div class="video-wrapper">
+<video controls muted loop>
+<source src="./static/demos/best1.mp4" type="video/mp4">
+</video>
+</div>
+<p class="video-description">Best Practice 1</p>
+</div>
+<div class="video-item" data-index="1">
+<div class="video-wrapper">
+<video controls muted loop>
+<source src="./static/demos/best2.mp4" type="video/mp4">
+</video>
+</div>
+<p class="video-description">Best Practice 2</p>
+</div>
+<div class="video-item" data-index="2">
+<div class="video-wrapper">
+<video controls muted loop>
+<source src="./static/demos/best3.mp4" type="video/mp4">
+</video>
+</div>
+<p class="video-description">Best Practice 3</p>
+</div>
+<div class="video-item" data-index="3">
+<div class="video-wrapper">
+<video controls muted loop>
+<source src="./static/demos/best4.mp4" type="video/mp4">
+</video>
+</div>
+<p class="video-description">Best Practice 4</p>
+</div>
+<div class="video-item" data-index="4">
+<div class="video-wrapper">
+<video controls muted loop>
+<source src="./static/demos/best5.mp4" type="video/mp4">
+</video>
+</div>
+<p class="video-description">Best Practice 5</p>
+</div>
+<div class="video-item" data-index="5">
+<div class="video-wrapper">
+<video controls muted loop>
+<source src="./static/demos/best6.mp4" type="video/mp4">
+</video>
+</div>
+<p class="video-description">Best Practice 6</p>
+</div>
+</div>
+<button class="gallery-next">›</button>
+</div>
+</div>
 
-<center>Due to space limitations, we are only demonstrating some of the functions in certain areas: 1. Some functions are quite complex; 2. Some mechanisms are not easy to be displayed in short videos. 3. We can achieve too many tasks, and instead of creating a DEMO, it would be better to create plugins so that more people can use them immediately. 4. Some tasks are too abstract, for example, we can even simulate a blind person who cannot see RGB but can infer the material based on friction/ sound, and then guess the softness/hardness/category/color, this is the thinking chain in the World Snapshot Model (WSM). All the DEMOs can be accessed for viewing <a href="https://github.com/World-Snapshot/The-results-of-Augustus">results</a>, <a href="https://world-snapshot.github.io/doc/index.html?page=S3_get_start/04_best_practices.md">documentation</a> or <a href="https://github.com/World-Snapshot/ControlWave/tree/main/plugins">plugins</a>.</center>
+<center>Due to space limitations, we are only demonstrating some of the functions in certain areas: 1. Some functions are quite complex; 2. Some mechanisms are not easy to be displayed in short videos. 3. We can achieve too many tasks (theoretically, is the limit of the world.), and instead of creating a DEMO, it would be better to create plugins so that more people can use them immediately. 4. Some tasks are too abstract, for example, we can even simulate a blind person who cannot see RGB but can infer the material based on friction/ sound, and then guess the softness/hardness/category/color, this is the thinking chain in the World Snapshot Model (WSM). All the DEMOs can be accessed for viewing <a href="https://github.com/World-Snapshot/The-results-of-Augustus">results</a>, <a href="https://world-snapshot.github.io/doc/index.html?page=S3_get_start/04_best_practices.md">documentation</a> or <a href="https://github.com/World-Snapshot/ControlWave/tree/main/plugins">plugins</a>.</center>
 
 ### Advanced Features
 
-<div id="videoGallery" style="max-width: 100%; margin: 40px auto;">
-<div style="display: flex; justify-content: center; gap: 5px; margin-bottom: 20px; flex-wrap: wrap;">
-<button class="gallery-tab" data-video="0" onclick="window.galleryShowFromTab(0)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">1: consistency</button>
-<button class="gallery-tab" data-video="1" onclick="window.galleryShowFromTab(1)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">2: native 3D+t</button>
-<button class="gallery-tab" data-video="2" onclick="window.galleryShowFromTab(2)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">3: variable resolution</button>
-<button class="gallery-tab" data-video="3" onclick="window.galleryShowFromTab(3)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">4: unlimited duration</button>
-<button class="gallery-tab" data-video="4" onclick="window.galleryShowFromTab(4)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">5: predicting the future</button>
-<button class="gallery-tab" data-video="5" onclick="window.galleryShowFromTab(5)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">6: variable FPS</button>
-<button class="gallery-tab" data-video="6" onclick="window.galleryShowFromTab(6)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">7: physics</button>
-<button class="gallery-tab" data-video="7" onclick="window.galleryShowFromTab(7)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">8: causality</button>
-<button class="gallery-tab" data-video="8" onclick="window.galleryShowFromTab(8)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">9: predicting the past</button>
-<button class="gallery-tab" data-video="9" onclick="window.galleryShowFromTab(9)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">10: pixel-level control</button>
-<button class="gallery-tab" data-video="10" onclick="window.galleryShowFromTab(10)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">11: synchronizing core space and real world</button>
-<button class="gallery-tab" data-video="11" onclick="window.galleryShowFromTab(11)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">12: training the world itself</button>
+<!-- Advanced Features Gallery -->
+<div class="video-gallery" data-gallery-id="advanced-features">
+<div class="gallery-tabs-container">
+<button class="gallery-tab" data-video="0">1: consistency</button>
+<button class="gallery-tab" data-video="1">2: native 3D+t</button>
+<button class="gallery-tab" data-video="2">3: variable resolution</button>
+<button class="gallery-tab" data-video="3">4: unlimited duration</button>
+<button class="gallery-tab" data-video="4">5: predicting the future</button>
+<button class="gallery-tab" data-video="5">6: variable FPS</button>
+<button class="gallery-tab" data-video="6">7: physics</button>
+<button class="gallery-tab" data-video="7">8: causality</button>
+<button class="gallery-tab" data-video="8">9: predicting the past</button>
+<button class="gallery-tab" data-video="9">10: pixel-level control</button>
+<button class="gallery-tab" data-video="10">11: synchronizing core space and real world</button>
+<button class="gallery-tab" data-video="11">12: training the world itself</button>
 </div>
-<div style="position: relative;">
-<button class="gallery-prev" onclick="window.galleryPrev()" style="position: absolute; left: -40px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 20px 12px; cursor: pointer; font-size: 20px; border-radius: 4px; z-index: 10;">‹</button>
-<div id="videosContainer" style="display: flex; justify-content: space-between; gap: 5%; padding: 0 50px; overflow: hidden;">
-<div class="video-item" data-index="0" style="width: 30%; display: block;">
-<div style="position: relative; padding-bottom: 100%; background: #f0f0f0; border-radius: 8px; overflow: hidden;">
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" controls muted loop>
+<div class="gallery-content">
+<button class="gallery-prev">‹</button>
+<div class="videos-container">
+<div class="video-item" data-index="0">
+<div class="video-wrapper">
+<video controls muted loop>
 <source src="./static/demos/video1.mp4" type="video/mp4">
 </video>
 </div>
-<p style="text-align: center; margin-top: 10px; font-size: 14px;">Video 1: consistency</p>
+<p class="video-description">Video 1: consistency</p>
 </div>
-<div class="video-item" data-index="1" style="width: 30%; display: block;">
-<div style="position: relative; padding-bottom: 100%; background: #f0f0f0; border-radius: 8px; overflow: hidden;">
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" controls muted loop>
+<div class="video-item" data-index="1">
+<div class="video-wrapper">
+<video controls muted loop>
 <source src="./static/demos/video2.mp4" type="video/mp4">
 </video>
 </div>
-<p style="text-align: center; margin-top: 10px; font-size: 14px;">Video 2: native 3D+t</p>
+<p class="video-description">Video 2: native 3D+t</p>
 </div>
-<div class="video-item" data-index="2" style="width: 30%; display: block;">
-<div style="position: relative; padding-bottom: 100%; background: #f0f0f0; border-radius: 8px; overflow: hidden;">
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" controls muted loop>
+<div class="video-item" data-index="2">
+<div class="video-wrapper">
+<video controls muted loop>
 <source src="./static/demos/video3.mp4" type="video/mp4">
 </video>
 </div>
-<p style="text-align: center; margin-top: 10px; font-size: 14px;">Video 3: variable resolution</p>
+<p class="video-description">Video 3: variable resolution</p>
 </div>
-<div class="video-item" data-index="3" style="width: 30%; display: none;">
-<div style="position: relative; padding-bottom: 100%; background: #f0f0f0; border-radius: 8px; overflow: hidden;">
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" controls muted loop>
+<div class="video-item" data-index="3">
+<div class="video-wrapper">
+<video controls muted loop>
 <source src="./static/demos/video4.mp4" type="video/mp4">
 </video>
 </div>
-<p style="text-align: center; margin-top: 10px; font-size: 14px;">Video 4: unlimited duration</p>
+<p class="video-description">Video 4: unlimited duration</p>
 </div>
-<div class="video-item" data-index="4" style="width: 30%; display: none;">
-<div style="position: relative; padding-bottom: 100%; background: #f0f0f0; border-radius: 8px; overflow: hidden;">
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" controls muted loop>
+<div class="video-item" data-index="4">
+<div class="video-wrapper">
+<video controls muted loop>
 <source src="./static/demos/video5.mp4" type="video/mp4">
 </video>
 </div>
-<p style="text-align: center; margin-top: 10px; font-size: 14px;">Video 5: predicting the future</p>
+<p class="video-description">Video 5: predicting the future</p>
 </div>
-<div class="video-item" data-index="5" style="width: 30%; display: none;">
-<div style="position: relative; padding-bottom: 100%; background: #f0f0f0; border-radius: 8px; overflow: hidden;">
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" controls muted loop>
+<div class="video-item" data-index="5">
+<div class="video-wrapper">
+<video controls muted loop>
 <source src="./static/demos/video6.mp4" type="video/mp4">
 </video>
 </div>
-<p style="text-align: center; margin-top: 10px; font-size: 14px;">Video 6: variable FPS</p>
+<p class="video-description">Video 6: variable FPS</p>
 </div>
-<div class="video-item" data-index="6" style="width: 30%; display: none;">
-<div style="position: relative; padding-bottom: 100%; background: #f0f0f0; border-radius: 8px; overflow: hidden;">
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" controls muted loop>
+<div class="video-item" data-index="6">
+<div class="video-wrapper">
+<video controls muted loop>
 <source src="./static/demos/video7.mp4" type="video/mp4">
 </video>
 </div>
-<p style="text-align: center; margin-top: 10px; font-size: 14px;">Video 7: physics</p>
+<p class="video-description">Video 7: physics</p>
 </div>
-<div class="video-item" data-index="7" style="width: 30%; display: none;">
-<div style="position: relative; padding-bottom: 100%; background: #f0f0f0; border-radius: 8px; overflow: hidden;">
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" controls muted loop>
+<div class="video-item" data-index="7">
+<div class="video-wrapper">
+<video controls muted loop>
 <source src="./static/demos/video8.mp4" type="video/mp4">
 </video>
 </div>
-<p style="text-align: center; margin-top: 10px; font-size: 14px;">Video 8: causality</p>
+<p class="video-description">Video 8: causality</p>
 </div>
-<div class="video-item" data-index="8" style="width: 30%; display: none;">
-<div style="position: relative; padding-bottom: 100%; background: #f0f0f0; border-radius: 8px; overflow: hidden;">
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" controls muted loop>
+<div class="video-item" data-index="8">
+<div class="video-wrapper">
+<video controls muted loop>
 <source src="./static/demos/video9.mp4" type="video/mp4">
 </video>
 </div>
-<p style="text-align: center; margin-top: 10px; font-size: 14px;">Video 9: predicting the past</p>
+<p class="video-description">Video 9: predicting the past</p>
 </div>
-<div class="video-item" data-index="9" style="width: 30%; display: none;">
-<div style="position: relative; padding-bottom: 100%; background: #f0f0f0; border-radius: 8px; overflow: hidden;">
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" controls muted loop>
+<div class="video-item" data-index="9">
+<div class="video-wrapper">
+<video controls muted loop>
 <source src="./static/demos/video10.mp4" type="video/mp4">
 </video>
 </div>
-<p style="text-align: center; margin-top: 10px; font-size: 14px;">Video 10: pixel-level control of the world distribution</p>
+<p class="video-description">Video 10: pixel-level control of the world distribution</p>
 </div>
-<div class="video-item" data-index="10" style="width: 30%; display: none;">
-<div style="position: relative; padding-bottom: 100%; background: #f0f0f0; border-radius: 8px; overflow: hidden;">
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" controls muted loop>
+<div class="video-item" data-index="10">
+<div class="video-wrapper">
+<video controls muted loop>
 <source src="./static/demos/video11.mp4" type="video/mp4">
 </video>
 </div>
-<p style="text-align: center; margin-top: 10px; font-size: 14px;">Video 11: synchronizing the real world with model's core space</p>
+<p class="video-description">Video 11: synchronizing the real world with model's core space</p>
 </div>
-<div class="video-item" data-index="11" style="width: 30%; display: none;">
-<div style="position: relative; padding-bottom: 100%; background: #f0f0f0; border-radius: 8px; overflow: hidden;">
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" controls muted loop>
+<div class="video-item" data-index="11">
+<div class="video-wrapper">
+<video controls muted loop>
 <source src="./static/demos/video12.mp4" type="video/mp4">
 </video>
 </div>
-<p style="text-align: center; margin-top: 10px; font-size: 14px;">Video 12: training the world itself</p>
+<p class="video-description">Video 12: training the world itself</p>
 </div>
 </div>
-<button class="gallery-next" onclick="window.galleryNext()" style="position: absolute; right: -40px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 20px 12px; cursor: pointer; font-size: 20px; border-radius: 4px; z-index: 10;">›</button>
+<button class="gallery-next">›</button>
 </div>
 </div>
 
@@ -132,60 +305,120 @@
 
 <script>
 (function() {
-  var currentStart = 0;
-  var totalVideos = 12;
-  var videosPerPage = 3;
+  // Gallery class to manage individual galleries
+  function VideoGallery(container) {
+    this.container = container;
+    this.galleryId = container.getAttribute('data-gallery-id');
+    this.currentStart = 0;
+    this.videosPerPage = 3;
+    
+    // Get gallery elements
+    this.videos = container.querySelectorAll('.video-item');
+    this.tabs = container.querySelectorAll('.gallery-tab');
+    this.prevBtn = container.querySelector('.gallery-prev');
+    this.nextBtn = container.querySelector('.gallery-next');
+    
+    this.totalVideos = this.videos.length;
+    
+    // Bind event handlers
+    this.init();
+  }
   
-  function showVideos(startIndex) {
-    var videos = document.querySelectorAll('#videoGallery .video-item');
-    var tabs = document.querySelectorAll('#videoGallery .gallery-tab');
-    
-    if (!videos.length || !tabs.length) return;
-    
-    for (var i = 0; i < videos.length; i++) {
-      videos[i].style.display = 'none';
+  VideoGallery.prototype.showVideos = function(startIndex) {
+    // Hide all videos and remove active class
+    for (var i = 0; i < this.videos.length; i++) {
+      this.videos[i].classList.remove('active');
     }
     
-    for (var i = 0; i < tabs.length; i++) {
-      tabs[i].style.background = 'white';
-      tabs[i].style.color = 'black';
+    // Reset all tabs
+    for (var i = 0; i < this.tabs.length; i++) {
+      this.tabs[i].classList.remove('active');
     }
     
-    for (var i = 0; i < videosPerPage; i++) {
+    // Show current page videos and highlight tabs
+    for (var i = 0; i < this.videosPerPage; i++) {
       var index = startIndex + i;
-      if (index < totalVideos && index < videos.length) {
-        videos[index].style.display = 'block';
-        if (index < tabs.length) {
-          tabs[index].style.background = '#007bff';
-          tabs[index].style.color = 'white';
+      if (index < this.totalVideos) {
+        this.videos[index].classList.add('active');
+        if (index < this.tabs.length) {
+          this.tabs[index].classList.add('active');
         }
       }
     }
     
-    currentStart = startIndex;
-  }
-  
-  window.galleryShowFromTab = function(videoIndex) {
-    var newStart = Math.max(0, Math.min(videoIndex - 1, totalVideos - videosPerPage));
-    showVideos(newStart);
+    this.currentStart = startIndex;
   };
   
-  window.galleryPrev = function() {
-    var newStart = currentStart - videosPerPage;
+  VideoGallery.prototype.showFromTab = function(videoIndex) {
+    var newStart = Math.max(0, Math.min(videoIndex - 1, this.totalVideos - this.videosPerPage));
+    this.showVideos(newStart);
+  };
+  
+  VideoGallery.prototype.prev = function() {
+    var newStart = this.currentStart - this.videosPerPage;
     if (newStart < 0) {
-      newStart = Math.max(0, totalVideos - videosPerPage);
+      newStart = Math.max(0, this.totalVideos - this.videosPerPage);
     }
-    showVideos(newStart);
+    this.showVideos(newStart);
   };
   
-  window.galleryNext = function() {
-    var newStart = currentStart + videosPerPage;
-    if (newStart >= totalVideos) {
+  VideoGallery.prototype.next = function() {
+    var newStart = this.currentStart + this.videosPerPage;
+    if (newStart >= this.totalVideos) {
       newStart = 0;
     }
-    showVideos(newStart);
+    this.showVideos(newStart);
   };
   
-  showVideos(0);
+  VideoGallery.prototype.init = function() {
+    var self = this;
+    
+    // Tab click handlers
+    for (var i = 0; i < this.tabs.length; i++) {
+      (function(index) {
+        self.tabs[index].addEventListener('click', function() {
+          var videoIndex = parseInt(this.getAttribute('data-video'));
+          self.showFromTab(videoIndex);
+        });
+      })(i);
+    }
+    
+    // Arrow button handlers
+    if (this.prevBtn) {
+      this.prevBtn.addEventListener('click', function() {
+        self.prev();
+      });
+    }
+    
+    if (this.nextBtn) {
+      this.nextBtn.addEventListener('click', function() {
+        self.next();
+      });
+    }
+    
+    // Initialize first page
+    this.showVideos(0);
+  };
+  
+  // Initialize all galleries on the page
+  function initializeAllGalleries() {
+    var galleries = document.querySelectorAll('.video-gallery');
+    var galleryInstances = [];
+    
+    for (var i = 0; i < galleries.length; i++) {
+      galleryInstances.push(new VideoGallery(galleries[i]));
+    }
+    
+    // Store instances globally if needed for debugging
+    window.videoGalleries = galleryInstances;
+  }
+  
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAllGalleries);
+  } else {
+    // DOM is already ready, initialize immediately
+    setTimeout(initializeAllGalleries, 100);
+  }
 })();
 </script>
