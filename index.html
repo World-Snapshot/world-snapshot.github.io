@@ -315,6 +315,9 @@
             
             // 为标题添加锚点链接
             addHeaderLinks();
+            
+            // Execute all scripts in rendered markdown
+            executeMarkdownScripts();
 
             // Smooth scrolling for sidebar navigation
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -399,6 +402,31 @@
             });
         });
 
+
+        // Execute all scripts found in rendered markdown sections
+        function executeMarkdownScripts() {
+            // Find all markdown sections
+            const markdownSections = document.querySelectorAll('.markdown-section');
+            
+            markdownSections.forEach(section => {
+                // Find all script tags in this section
+                const scripts = section.querySelectorAll('script');
+                
+                scripts.forEach(script => {
+                    // Create a new script element and execute it
+                    const newScript = document.createElement('script');
+                    newScript.textContent = script.textContent;
+                    
+                    // Copy any attributes from the original script
+                    Array.from(script.attributes).forEach(attr => {
+                        newScript.setAttribute(attr.name, attr.value);
+                    });
+                    
+                    // Replace the old script with the new one to execute it
+                    script.parentNode.replaceChild(newScript, script);
+                });
+            });
+        }
 
         // 为标题添加锚点链接的函数
         function addHeaderLinks() {
