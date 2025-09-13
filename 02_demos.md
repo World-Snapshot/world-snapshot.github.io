@@ -5,7 +5,7 @@
 ### Best Practices
 
 
-<center>Due to space limitations, we are only demonstrating some of the functions in certain areas: 1. Some functions are quite complex; 2. Some mechanisms are not easy to be displayed in short videos. 3. We can achieve too many tasks, and instead of creating a DEMO, it would be better to create plugins so that more people can use them immediately. 4. Some tasks are too abstract, for example, we can even simulate a blind person who cannot see RGB but can infer the material based on friction/ sound, and then guess the softness/hardness/category/color, this is the thinking chain in the World Snapshot Model (WSM). All the DEMOs can be accessed for viewing results, documentation or plugins.</center>
+<center>Due to space limitations, we are only demonstrating some of the functions in certain areas: 1. Some functions are quite complex; 2. Some mechanisms are not easy to be displayed in short videos. 3. We can achieve too many tasks, and instead of creating a DEMO, it would be better to create plugins so that more people can use them immediately. 4. Some tasks are too abstract, for example, we can even simulate a blind person who cannot see RGB but can infer the material based on friction/ sound, and then guess the softness/hardness/category/color, this is the thinking chain in the World Snapshot Model (WSM). All the DEMOs can be accessed for viewing <a href="https://github.com/World-Snapshot/The-results-of-Augustus">results</a>, <a href="https://world-snapshot.github.io/doc/index.html?page=S3_get_start/04_best_practices.md">documentation</a> or <a href="https://github.com/World-Snapshot/ControlWave/tree/main/plugins">plugins</a>.</center>
 
 ### Advanced Features
 
@@ -128,7 +128,7 @@
 </div>
 </div>
 
-<center>As mentioned above, this is only a proof of concept. The core space for simulating the operation of the world was obtained solely from Depth Map training (without the need for RGB in the training process), and it is currently rather weak, but the advanced features therein are not present in the previous models. We aim to extend simple shapes to any realistic shapes in the next version. All the DEMOs can be accessed for viewing results, documentation or plugins.</center>
+<center>As mentioned above, this is only a proof of concept. The core space for simulating the operation of the world was obtained solely from Depth Map training (without the need for RGB in the training process), and it is currently rather weak, but some advanced features therein are not present in the previous models. We aim to extend simple shapes to any realistic shapes in the next version. All the DEMOs can be accessed for viewing <a href="https://github.com/World-Snapshot/The-results-of-Augustus">results</a>, <a href="https://world-snapshot.github.io/doc/index.html?page=S3_get_start/05_advanced_features.md">documentation</a> or <a href="https://github.com/World-Snapshot/ControlWave/tree/main/plugins">plugins</a>.</center>
 
 <script>
 (function() {
