@@ -191,11 +191,14 @@
             <!-- Abstract Section (Markdown) -->
             <section id="abstract" class="markdown-section"></section>
 
-            <!-- Demos Section (HTML) -->
+            <!-- Demos Section (Markdown) -->
+            <section id="demos" class="markdown-section"></section>
+            
+            <!-- Original HTML Demos Section (Commented Out) -->
+            <!--
             <section id="demos" class="html-section">
                 <h2>Demos</h2>
                 <div class="demo-grid">
-                    <!-- Demo items can be added here -->
                     <div class="demo-item">
                         <img src="/api/placeholder/400/200" alt="Demo 1" class="demo-image">
                         <div class="demo-content">
@@ -210,9 +213,9 @@
                             <p class="demo-description">Description of demo 2 and its features.</p>
                         </div>
                     </div>
-                    <!-- Add more demo items as needed -->
                 </div>
             </section>
+            -->
 
             <!-- Experiment Section (Markdown) -->
             <section id="experiment" class="markdown-section"></section>
@@ -263,29 +266,34 @@
                 file: '01_abstract.md'
             },
             {
+                id: 'demos',
+                type: 'markdown',
+                file: '02_demos.md'
+            },
+            {
                 id: 'experiment',
                 type: 'markdown',
-                file: '02_experiment.md'
+                file: '03_experiment.md'
             },
             {
                 id: 'summary',
                 type: 'markdown',
-                file: '03_summary.md'
+                file: '04_summary.md'
             },
             {
                 id: 'acknowledgments',
                 type: 'markdown',
-                file: '04_acknowledgments.md'
+                file: '05_acknowledgments.md'
             },
             {
                 id: 'contributions',
                 type: 'markdown',
-                file: '05_contributions.md'
+                file: '06_contributions.md'
             },
             {
                 id: 'bibtex',
                 type: 'markdown',
-                file: '06_bibtex.md'
+                file: '07_bibtex.md'
             }
         ];
 
