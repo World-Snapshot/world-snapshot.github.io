@@ -5,6 +5,8 @@
 ### Best Practices
 
 
+<center>Due to space limitations, we are only demonstrating some of the functions in certain areas: 1. Some functions are quite complex; 2. Some mechanisms are not easy to be displayed in short videos. 3. We can achieve too many tasks, and instead of creating a DEMO, it would be better to create plugins so that more people can use them immediately. 4. Some tasks are too abstract, for example, we can even simulate a blind person who cannot see RGB but can infer the material based on friction/ sound, and then guess the softness/hardness/category/color, this is the thinking chain in the World Snapshot Model (WSM). All the DEMOs can be accessed for viewing results, documentation or plugins.</center>
+
 ### Advanced Features
 
 <div id="videoGallery" style="max-width: 100%; margin: 40px auto;">
@@ -19,8 +21,8 @@
 <button class="gallery-tab" data-video="7" onclick="window.galleryShowFromTab(7)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">8: causality</button>
 <button class="gallery-tab" data-video="8" onclick="window.galleryShowFromTab(8)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">9: predicting the past</button>
 <button class="gallery-tab" data-video="9" onclick="window.galleryShowFromTab(9)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">10: pixel-level control</button>
-<button class="gallery-tab" data-video="10" onclick="window.galleryShowFromTab(10)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">11: synchronizing</button>
-<button class="gallery-tab" data-video="11" onclick="window.galleryShowFromTab(11)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">12: training the world</button>
+<button class="gallery-tab" data-video="10" onclick="window.galleryShowFromTab(10)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">11: synchronizing core space and real world</button>
+<button class="gallery-tab" data-video="11" onclick="window.galleryShowFromTab(11)" style="padding: 6px 12px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px;">12: training the world itself</button>
 </div>
 <div style="position: relative;">
 <button class="gallery-prev" onclick="window.galleryPrev()" style="position: absolute; left: -40px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 20px 12px; cursor: pointer; font-size: 20px; border-radius: 4px; z-index: 10;">‹</button>
@@ -126,7 +128,7 @@
 </div>
 </div>
 
-<center>As mentioned above, this is only a proof of concept. The core space for simulating the operation of the world was obtained solely from Depth Map training (without the need for RGB in the training process), and it is currently rather weak, but the advanced features therein are not present in the previous models. We aim to extend simple shapes to any realistic shapes in the next version.</center>
+<center>As mentioned above, this is only a proof of concept. The core space for simulating the operation of the world was obtained solely from Depth Map training (without the need for RGB in the training process), and it is currently rather weak, but the advanced features therein are not present in the previous models. We aim to extend simple shapes to any realistic shapes in the next version. All the DEMOs can be accessed for viewing results, documentation or plugins.</center>
 
 <script>
 (function() {
