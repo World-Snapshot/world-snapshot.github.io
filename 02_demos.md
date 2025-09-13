@@ -126,6 +126,8 @@
 </div>
 </div>
 
+<center>As mentioned above, this is only a proof of concept. The core space for simulating the operation of the world was obtained solely from Depth Map training (without the need for RGB in the training process), and it is currently rather weak, but the advanced features therein are not present in the previous models. We aim to extend simple shapes to any realistic shapes in the next version.</center>
+
 <script>
 (function() {
   var currentStart = 0;
