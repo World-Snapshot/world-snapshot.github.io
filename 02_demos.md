@@ -126,7 +126,7 @@
 <div class="videos-container">
 <div class="video-item" data-index="0">
 <div class="video-wrapper">
-<video controls muted loop>
+<video controls autoplay muted loop>
 <source src="./static/demos/best1.mp4" type="video/mp4">
 </video>
 </div>
@@ -134,7 +134,7 @@
 </div>
 <div class="video-item" data-index="1">
 <div class="video-wrapper">
-<video controls muted loop>
+<video controls autoplay muted loop>
 <source src="./static/demos/best2.mp4" type="video/mp4">
 </video>
 </div>
@@ -142,7 +142,7 @@
 </div>
 <div class="video-item" data-index="2">
 <div class="video-wrapper">
-<video controls muted loop>
+<video controls autoplay muted loop>
 <source src="./static/demos/best3.mp4" type="video/mp4">
 </video>
 </div>
@@ -150,7 +150,7 @@
 </div>
 <div class="video-item" data-index="3">
 <div class="video-wrapper">
-<video controls muted loop>
+<video controls autoplay muted loop>
 <source src="./static/demos/best4.mp4" type="video/mp4">
 </video>
 </div>
@@ -158,7 +158,7 @@
 </div>
 <div class="video-item" data-index="4">
 <div class="video-wrapper">
-<video controls muted loop>
+<video controls autoplay muted loop>
 <source src="./static/demos/best5.mp4" type="video/mp4">
 </video>
 </div>
@@ -166,7 +166,7 @@
 </div>
 <div class="video-item" data-index="5">
 <div class="video-wrapper">
-<video controls muted loop>
+<video controls autoplay muted loop>
 <source src="./static/demos/best6.mp4" type="video/mp4">
 </video>
 </div>
@@ -202,96 +202,96 @@
 <div class="videos-container">
 <div class="video-item" data-index="0">
 <div class="video-wrapper">
-<video controls muted loop>
-<source src="./static/demos/video1.mp4" type="video/mp4">
+<video controls autoplay muted loop>
+<source src="./static/demos/advanced_1.mp4" type="video/mp4">
 </video>
 </div>
 <p class="video-description">Video 1: consistency</p>
 </div>
 <div class="video-item" data-index="1">
 <div class="video-wrapper">
-<video controls muted loop>
-<source src="./static/demos/video2.mp4" type="video/mp4">
+<video controls autoplay muted loop>
+<source src="./static/demos/advanced_1.mp4" type="video/mp4">
 </video>
 </div>
 <p class="video-description">Video 2: native 3D+t</p>
 </div>
 <div class="video-item" data-index="2">
 <div class="video-wrapper">
-<video controls muted loop>
-<source src="./static/demos/video3.mp4" type="video/mp4">
+<video controls autoplay muted loop>
+<source src="./static/demos/advanced_1.mp4" type="video/mp4">
 </video>
 </div>
 <p class="video-description">Video 3: variable resolution</p>
 </div>
 <div class="video-item" data-index="3">
 <div class="video-wrapper">
-<video controls muted loop>
-<source src="./static/demos/video4.mp4" type="video/mp4">
+<video controls autoplay muted loop>
+<source src="./static/demos/advanced_1.mp4" type="video/mp4">
 </video>
 </div>
 <p class="video-description">Video 4: unlimited duration</p>
 </div>
 <div class="video-item" data-index="4">
 <div class="video-wrapper">
-<video controls muted loop>
-<source src="./static/demos/video5.mp4" type="video/mp4">
+<video controls autoplay muted loop>
+<source src="./static/demos/advanced_1.mp4" type="video/mp4">
 </video>
 </div>
 <p class="video-description">Video 5: predicting the future</p>
 </div>
 <div class="video-item" data-index="5">
 <div class="video-wrapper">
-<video controls muted loop>
-<source src="./static/demos/video6.mp4" type="video/mp4">
+<video controls autoplay muted loop>
+<source src="./static/demos/advanced_1.mp4" type="video/mp4">
 </video>
 </div>
 <p class="video-description">Video 6: variable FPS</p>
 </div>
 <div class="video-item" data-index="6">
 <div class="video-wrapper">
-<video controls muted loop>
-<source src="./static/demos/video7.mp4" type="video/mp4">
+<video controls autoplay muted loop>
+<source src="./static/demos/advanced_1.mp4" type="video/mp4">
 </video>
 </div>
 <p class="video-description">Video 7: physics</p>
 </div>
 <div class="video-item" data-index="7">
 <div class="video-wrapper">
-<video controls muted loop>
-<source src="./static/demos/video8.mp4" type="video/mp4">
+<video controls autoplay muted loop>
+<source src="./static/demos/advanced_1.mp4" type="video/mp4">
 </video>
 </div>
 <p class="video-description">Video 8: causality</p>
 </div>
 <div class="video-item" data-index="8">
 <div class="video-wrapper">
-<video controls muted loop>
-<source src="./static/demos/video9.mp4" type="video/mp4">
+<video controls autoplay muted loop>
+<source src="./static/demos/advanced_1.mp4" type="video/mp4">
 </video>
 </div>
 <p class="video-description">Video 9: predicting the past</p>
 </div>
 <div class="video-item" data-index="9">
 <div class="video-wrapper">
-<video controls muted loop>
-<source src="./static/demos/video10.mp4" type="video/mp4">
+<video controls autoplay muted loop>
+<source src="./static/demos/advanced_1.mp4" type="video/mp4">
 </video>
 </div>
 <p class="video-description">Video 10: pixel-level control of the world distribution</p>
 </div>
 <div class="video-item" data-index="10">
 <div class="video-wrapper">
-<video controls muted loop>
-<source src="./static/demos/video11.mp4" type="video/mp4">
+<video controls autoplay muted loop>
+<source src="./static/demos/advanced_1.mp4" type="video/mp4">
 </video>
 </div>
 <p class="video-description">Video 11: synchronizing the real world with model's core space</p>
 </div>
 <div class="video-item" data-index="11">
 <div class="video-wrapper">
-<video controls muted loop>
-<source src="./static/demos/video12.mp4" type="video/mp4">
+<video controls autoplay muted loop>
+<source src="./static/demos/advanced_1.mp4" type="video/mp4">
 </video>
 </div>
 <p class="video-description">Video 12: training the world itself</p>
