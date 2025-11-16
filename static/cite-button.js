@@ -278,6 +278,21 @@ const CiteButton = (function() {
             '  display: none;',
             '  font-size: 14px;',
             '}',
+            'footer {',
+            '  font-size: small;',
+            '  border-top: 1px solid #c0c0c0;',
+            '  padding-top: 0.5em;',
+            '  margin-top: 2em;',
+            '  color: #c0c0c0;',
+            '  text-align: center;',
+            '}',
+            'footer a {',
+            '  color: #80a0b0;',
+            '  text-decoration: none;',
+            '}',
+            'footer a:hover {',
+            '  text-decoration: underline;',
+            '}',
             '</style>',
             '</head>',
             '<body>',
@@ -297,6 +312,11 @@ const CiteButton = (function() {
             '</ol>',
             '<p>In summary, anyone involved in compiling the documents should search independently to add these citations to the Google Scholar homepage (As long as the contributor has participated in the revision of the document, you have the right to include this citation in your Google Scholar profile). However, this approach also has drawbacks. If you use our template, your citation count may exceed what you should have. We will consider better solutions to fix this bug in the future.</p>',
             '</div>',
+            '<footer>',
+            '<div class="footer-text">',
+            '© CC BY-SA 4.0: Feel free to use this template, but please keep the Powered by <a href="https://github.com/World-Snapshot/doc" target="_blank">World Snapshot Doc</a>.',
+            '</div>',
+            '</footer>',
             '<script>',
             'document.getElementById("copyBtn").onclick = function() {',
             '  var text = document.getElementById("bibtex").textContent;',
@@ -387,7 +407,7 @@ const CiteButton = (function() {
         generateBibTeX: function(title, url, headerElement) {
             return generateBibTeX(title, url, headerElement);
         },
-        version: '1.3.0'
+        version: '1.3.1'
     };
 })();
 
