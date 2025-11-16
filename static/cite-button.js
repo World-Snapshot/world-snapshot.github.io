@@ -112,14 +112,56 @@ const CiteButton = (function() {
     }
 
     /**
+     * 从 URL 中提取前缀（只保留字母）
+     * 合并域名和路径的字母部分
+     */
+    function extractDomainPrefix(url) {
+        try {
+            let prefix = '';
+
+            // 提取域名部分
+            const domainMatch = url.match(/https?:\/\/([^\/]+)/);
+            if (domainMatch && domainMatch[1]) {
+                let domain = domainMatch[1];
+                // 处理端口号：移除 :端口
+                domain = domain.replace(/:\d+$/, '');
+                // 提取域名中的字母
+                const domainLetters = domain.replace(/[^a-zA-Z]/g, '').toLowerCase();
+                prefix += domainLetters;
+            }
+
+            // 提取路径部分（从域名后到 index.html 或 ? 或 # 之前）
+            const pathMatch = url.match(/https?:\/\/[^\/]+\/([^\?#]*)/);
+            if (pathMatch && pathMatch[1]) {
+                let pathPart = pathMatch[1];
+                // 移除 index.html, index.htm 等
+                pathPart = pathPart.replace(/\/?index\.html?$/, '');
+                // 提取路径中的字母
+                const pathLetters = pathPart.replace(/[^a-zA-Z]/g, '').toLowerCase();
+                prefix += pathLetters;
+            }
+
+            // 如果最终有字母，返回
+            if (prefix.length > 0) {
+                return prefix;
+            }
+        } catch (e) {
+            console.error('Error extracting domain prefix:', e);
+        }
+        // 如果提取失败，返回默认值
+        return 'worldsnapshotwebsites';
+    }
+
+    /**
      * 生成 BibTeX 引文
      */
     function generateBibTeX(title, url, headerElement) {
         const year = getYear();
 
-        // citation key 包含标题名称，格式: World_Snapshot_Websites_标题
+        // 从 URL 提取域名前缀（只保留字母）
+        const domainPrefix = extractDomainPrefix(url);
         const titleSlug = generateSlug(title);
-        const citationKey = 'World_Snapshot_Websites_' + titleSlug;
+        const citationKey = domainPrefix + '_' + titleSlug;
 
         // 获取完整的标题路径
         const fullPath = headerElement ? getHeaderPath(headerElement).join(' > ') : title;
@@ -345,7 +387,7 @@ const CiteButton = (function() {
         generateBibTeX: function(title, url, headerElement) {
             return generateBibTeX(title, url, headerElement);
         },
-        version: '1.2.0'
+        version: '1.3.0'
     };
 })();
 
