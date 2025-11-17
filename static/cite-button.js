@@ -15,7 +15,7 @@ const CiteButton = (function() {
     const defaultConfig = {
         // BibTeX 配置
         citationType: 'misc',
-        author: 'Corresponding Authors who used the World Snapshot Doc Template',
+        author: '{World Snapshot Team}',
         title: 'Related Documents or Contents of Top Level Project (under World Snapshot Template)',
         yearMode: 'current', // 'current' 或具体年份数字
 
@@ -166,9 +166,12 @@ const CiteButton = (function() {
         // 获取完整的标题路径
         const fullPath = headerElement ? getHeaderPath(headerElement).join(' > ') : title;
 
+        // 获取干净的标题文本用于 title 字段
+        const actualTitle = headerElement ? getCleanHeaderText(headerElement) : title;
+
         return `@${config.citationType}{${citationKey},
   author = {${config.author}},
-  title = {${config.title}},
+  title = {${actualTitle} (under World Snapshot Template)},
   year = {${year}},
   url = {${url}},
   note = {Section: ${fullPath}}
@@ -320,12 +323,13 @@ const CiteButton = (function() {
             '<p>We suggest not modifying the automatically generated BibTeX:</p>',
             '<ol>',
             '<li>Generally, the key should not be modified. If the generated Key conflicts, for example, if two websites both use our template and both have an Overview, then you can manually modify it. This will not affect the correct citation of your content. This is quite rare.</li>',
-            '<li>For Author, since the contribution of the Doc is uncertain and the number of authors will increase, it is best to keep it as it is. This is also beneficial for you to increase citations and attract more contributors to contribute to your project. And a fixed name is convenient for searching.</li>',
-            '<li>Because Google Scholar is sensitive to the title and the content you publish is likely to change, using a unified title is the best choice. For more detailed distinctions, you can obtain them from the following URL or note. More importantly, if you give a name to all the titles. This will cause your Google Scholar homepage to be covered by hundreds of small titles, which is very unattractive. Therefore, uniforming the titles is a better choice.</li>',
+            '<li>For Author, since the contribution of the Doc is uncertain and the number of authors will increase, it is best to use a team name. This is also beneficial for you to increase citations and attract more contributors to contribute to your project. And a fixed name is convenient for searching.</li>',
+            '<li>For the title, the default is to use the current paragraph title that is being referenced. It\'s better not to remove "(under World Snapshot Template)" after the title, because if you don\'t include this, it will be very difficult for you to quickly search for who has cited you on Google. This is equivalent to a filter identifier.</li>',
             '<li>The year is automatically obtained from the current year of the Doc. We assume that you will always maintain and be responsible for the content you publish online.</li>',
             '<li>The URL and note are automatically obtained from the current title of the cite.</li>',
             '</ol>',
-            '<p>In summary, anyone involved in compiling the documents should search independently to add these citations to the Google Scholar homepage (As long as the contributor has participated in the revision of the document, you have the right to include this citation in your Google Scholar profile). However, this approach also has drawbacks. If you use our template, your citation count may exceed what you should have. We will consider better solutions to fix this bug in the future.</p>',
+            '<p>In summary, anyone involved in compiling the documents should search independently to add these citations to the Google Scholar homepage (As long as the contributor has participated in the revision of the document, he have the right to include this citation in his Google Scholar profile).</p>',
+            '<p><strong>Important for Template Users:</strong> If you cloned this World Snapshot Doc Template for your own project, please remember to modify the <code>author</code> field in <code>doc/index.html</code> (line 528) to reflect your project\'s team name. For example, change <code>author: \'{World Snapshot Team}\'</code> to <code>author: \'{Your Project Team}\'</code>. This ensures proper attribution for your project.</p>', 
             '</div>',
             '<footer>',
             '<div class="footer-text">',
