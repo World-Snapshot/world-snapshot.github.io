@@ -43,5 +43,5 @@ We have dedicated templates for our organization, documentation and derivative w
 
 <br>
 <div style="width: 420px; height: 220px; overflow: hidden; margin: 20px auto;">
-<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=DVOirx5xZoatWTrQvYVH2Jzv9fHuoX_NoHOytFe_XOo&cl=ffffff&w=a"></script>
+<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=uLpmyibsbKwkpOEV9lWYObuAZkkRI7-IiK97npsAFE8&cl=ffffff&w=a"></script>
 </div>

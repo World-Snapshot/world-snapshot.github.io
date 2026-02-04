@@ -1,5 +1,5 @@
 ## PMC
 
-## Commiter
+## Committer
 
 ## Contributor
