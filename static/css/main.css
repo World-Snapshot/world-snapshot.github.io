@@ -1,0 +1,686 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    line-height: 1.6;
+    color: #202122;
+    background: #eeeeee;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 40px; /* 为 footer 预留空间 */
+}
+
+/* Global rule: make link underlines follow text color */
+a {
+    text-decoration: underline;
+    text-decoration-color: inherit;
+}
+
+/* When links contain styled spans, remove link underline and let span handle it */
+a span[style*="color"] {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+}
+
+a:has(span[style*="color"]) {
+    text-decoration: none;
+}
+
+.sidebar {
+    position: absolute;
+    top: 0px;
+    left: 0;  /* Always visible */
+    width: 220px;
+    min-height: auto;
+    background: #f8f9fa;
+    border-right: 1px solid #a2a9b1;
+    border-bottom: 1px solid #a2a9b1;
+    padding: 20px;
+    transition: left 0.6s ease;
+    z-index: 99;
+}
+
+.sidebar-trigger {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 30px;
+    min-height: 600px;
+    z-index: 98;
+}
+
+/* Sidebar is always visible now, no need for hover effects */
+
+.nav-section {
+    margin: 8px 0;
+}
+
+.nav-section-title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #202122;
+    padding: 6px 0;
+    font-weight: 500;
+}
+
+.nav-toggle {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    position: relative;
+}
+
+.nav-toggle::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid #72777d;
+    border-bottom: 2px solid #72777d;
+    transform: translate(-75%, -50%) rotate(45deg);
+    transition: transform 0.2s;
+}
+
+.nav-section.collapsed .nav-toggle::before {
+    transform: translate(-75%, -75%) rotate(-45deg);
+}
+
+.nav-section.collapsed .nav-items {
+    display: none;
+}
+
+.nav-items {
+    margin-left: 24px;
+}
+
+.nav-link {
+    color: #3366cc;
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
+    font-size: 14px;
+}
+
+.nav-link:visited {
+    color: #3366cc;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.header {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 50px;
+    background: #fff;
+    border-bottom: 3px double #a2a9b1;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 100;
+    justify-content: space-between;
+    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.08), 4px 0 6px rgba(0, 0, 0, 0.08);
+}
+
+.header-title {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.header-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.header-link {
+    color: #3366cc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.header-link:visited {
+    color: #3366cc;
+}
+
+.header-link:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px 20px 0 20px;
+    min-height: calc(100vh - 200px); /* 确保内容区域至少占满屏幕 */
+    background: #fff;
+    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.08), 4px 0 6px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.authors {
+    text-align: center;
+    margin: 20px 0 10px;
+    line-height: 1.8;
+}
+
+.author-link {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+.author-link:visited {
+    color: #3366cc;
+}
+
+.author-link:hover {
+    text-decoration: underline;
+}
+
+.affiliations {
+    text-align: center;
+    margin: 10px 0;
+    color: #666;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: #f8f9fa;
+    border: 1px solid #a2a9b1;
+    border-radius: 4px;
+    color: #202122;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.button:hover {
+    background: #f0f0f0;
+}
+
+.button i {
+    margin-right: 8px;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 0;
+    /* 移除了固定的 padding-bottom 和 height: 0 */
+}
+
+.video-container video {
+    width: 100%;
+    height: auto; /* 高度会根据视频比例自动调整 */
+    display: block; /* 防止底部可能出现的小空隙 */
+}
+
+/* Markdown and HTML section styles */
+.markdown-section, .html-section {
+    margin: 0 0 40px 0;
+    padding-bottom: 10px;
+    scroll-margin-top: 70px;
+}
+
+/* Special case for teaser section - no margin */
+#teaser.html-section {
+    margin: 0;
+}
+
+/* Teaser section as flex container */
+.teaser-section {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.markdown-section h1, .html-section h1 {
+    font-size: 1.8em;
+    margin-bottom: 0.8em;
+    padding-bottom: 0.3em;
+    border-bottom: 3px solid #a2a9b1;
+    color: #000;
+    font-family: 'Linux Libertine','Georgia','Times',serif;
+    position: relative;
+}
+
+.markdown-section h2, .html-section h2 {
+    font-size: 1.5em;
+    margin: 1em 0;
+    padding-bottom: 0.2em;
+    border-bottom: 2px solid #c8ccd1;
+    color: #162441;
+    position: relative;
+}
+
+.markdown-section h3, .html-section h3 {
+    font-size: 1.2em;
+    margin: 0.8em 0;
+    color: #162441;
+    position: relative;
+}
+
+/* 标题锚点链接样式 */
+.markdown-section .header-link,
+.html-section .header-link {
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.2s;
+    text-decoration: none;
+    color: #666;
+    font-weight: normal;
+}
+
+.markdown-section h1:hover .header-link,
+.markdown-section h2:hover .header-link,
+.markdown-section h3:hover .header-link,
+.markdown-section h4:hover .header-link,
+.markdown-section h5:hover .header-link,
+.markdown-section h6:hover .header-link,
+.html-section h1:hover .header-link,
+.html-section h2:hover .header-link,
+.html-section h3:hover .header-link,
+.html-section h4:hover .header-link,
+.html-section h5:hover .header-link,
+.html-section h6:hover .header-link {
+    opacity: 1;
+}
+
+.markdown-section .header-link:hover,
+.html-section .header-link:hover {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+.markdown-section p, .html-section p {
+    margin: 1em 0;
+    line-height: 1.6;
+}
+
+/* Markdown section links - use standard link blue */
+.markdown-section a, .html-section a {
+    color: #0000EE;  /* Standard link blue */
+    text-decoration-color: currentColor;  /* Underline follows text color */
+}
+
+/* Ensure markdown links don't change color when visited */
+.markdown-section a:visited, .html-section a:visited {
+    color: #0000EE;  /* Keep same blue after visit */
+}
+
+/* For links with colored spans inside, ensure underline matches text color */
+.markdown-section a span, .html-section a span {
+    text-decoration-color: inherit;
+}
+
+.markdown-section pre, .html-section pre {
+    margin: 1em 0;
+    padding: 16px;
+    background: #f6f8fa;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+}
+
+.markdown-section code, .html-section code {
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+    font-size: 0.9em;
+    padding: 0.2em 0.4em;
+    background: #f6f8fa;
+    border-radius: 3px;
+}
+
+.markdown-section img, .html-section img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+}
+
+/* Demo section specific styles */
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0px;
+    margin: 0px 0;
+}
+
+.demo-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.demo-item:hover {
+    transform: translateY(-5px);
+}
+
+.demo-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.demo-content {
+    padding: 15px;
+}
+
+.demo-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #162441;
+}
+
+.demo-description {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.lock-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    font-size: 16px;
+    padding: 5px;
+    z-index: 100;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0px;
+    margin-top: 0px;
+    border-top: 1px solid #a2a9b1;
+    font-size: 14px;
+    color: #666;
+    background: #f6f6f6;
+}
+
+footer a {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+footer a:visited {
+    color: #3366cc;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Unordered lists style */
+.markdown-section ul, .html-section ul {
+    padding-left: 40px; /* Consistent with main content padding */
+    margin: 1em 0;      /* Same margin as paragraphs */
+}
+
+/* Ordered lists style */
+.markdown-section ol, .html-section ol {
+    padding-left: 40px; /* Consistent with main content padding */
+    margin: 1em 0;      /* Same margin as paragraphs */
+}
+
+.footnote {
+    color: #3366cc;
+    position: relative;
+    cursor: help;
+}
+.footnote:hover::after {
+    content: attr(data-note);
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background: #333;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 4px;
+    white-space: normal;
+    max-width: 300px;
+    min-width: 200px;
+    font-size: 0.9em;
+    line-height: 1.4;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    z-index: 1000;
+    word-wrap: break-word;
+}
+
+/* 当脚注靠近右边缘时，让提示框向左显示 */
+.footnote:hover::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 添加小三角形指向脚注 */
+.footnote:hover::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #333;
+    z-index: 1001;
+}
+
+/* Text Wall Logo Styles */
+.text-wall-logo {
+    width: 100%;
+    max-width: 1100px;  /* Adjusted for wider container */
+    margin: 0 auto;  /* Remove top and bottom margin */
+    padding: 0;
+}
+
+.text-wall-container {
+    position: relative;
+    height: 175px;  /* Fixed height to match photo */
+    background: #ffffff;  /* Pure white background */
+    border-radius: 8px;  /* 12px * 0.7 */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Text Wall Background */
+.text-wall-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0 14px 14px 14px;  /* Remove top padding */
+    font-family: 'Lucida Calligraphy', 'Lucida Handwriting', 'Apple Chancery', 'URW Chancery L', 'Monotype Corsiva', 'Georgia', cursive;
+    font-size: 0.62em;
+    line-height: 1.6;
+    color: #333333;  /* Dark gray/black text */
+    opacity: 0.4;
+    text-align: justify;
+    overflow: hidden;
+    font-weight: 500;  /* Slightly bolder for readability */
+}
+
+/* Name Outline - creates semi-transparent gray text */
+.name-outline {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.name-outline span {
+    font-family: 'Playfair Display', 'Didot', 'Georgia', serif;
+    font-size: 4.34em;  /* 6.2em * 0.7 */
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #333333;  /* Same gray as background text */
+    opacity: 0.15;  /* 30% opacity */
+    white-space: nowrap;
+    display: inline-block;
+    user-select: none;
+    pointer-events: none;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .text-wall-logo {
+        margin: 21px auto;  /* 30px * 0.7 */
+        padding: 0;
+    }
+    
+    .text-wall-container {
+        min-height: 122px;  /* 175px * 0.7 */
+    }
+    
+    .name-outline span {
+        font-size: 3.5em;  /* 5em * 0.7 */
+        letter-spacing: 0.06em;
+    }
+    
+    .text-wall-background {
+        font-size: 0.56em;  /* 0.8em * 0.7 */
+        padding: 10px;  /* Scale padding too */
+    }
+}
+
+@media (max-width: 480px) {
+    .name-outline span {
+        font-size: 2.52em;  /* 3.6em * 0.7 */
+        letter-spacing: 0.05em;
+    }
+    
+    .text-wall-background {
+        font-size: 0.49em;  /* 0.7em * 0.7 */
+    }
+}
+
+/* Teaser section photo container */
+.teaser-section .photo-container {
+    flex-shrink: 0;
+    width: fit-content;  /* Container width fits the image */
+    height: fit-content; /* Container height fits the image */
+    line-height: 0;  /* Remove line-height spacing */
+    font-size: 0;  /* Remove any font-size related spacing */
+}
+
+.teaser-section .photo-container img {
+    height: 175px;  /* Same height as text wall */
+    width: auto;
+    display: block;
+    border-radius: 8px;
+    margin: 0;  /* Remove any default margins */
+    padding: 0;  /* Remove any default padding */
+}
+
+/* Teaser section text wall container */
+.teaser-section .text-wall-container {
+    flex: 1;
+    height: 175px;  /* Fixed height to match photo */
+    position: relative;
+}
+
+/* Triangle link - hidden by default, shown on hover */
+.text-wall-triangle {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.62em;  /* Same size as background text */
+    color: #333333;
+    opacity: 0;  /* Hidden by default */
+    text-decoration: none;
+    z-index: 10;  /* Above other elements */
+    transition: opacity 0.3s ease;
+}
+
+/* Show triangle when hovering over text wall container */
+.text-wall-container:hover .text-wall-triangle {
+    opacity: 0.4;  /* Same opacity as background text */
+}
+
+/* Make triangle slightly more visible when hovering over it directly */
+.text-wall-triangle:hover {
+    opacity: 0.6 !important;
+}
+
+/* Tabs Component Styles */
+.tabs {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #c8ccd1;
+    width: 90%;
+}
+
+.tab {
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 2px 8px;
+    border: 1px solid #c8ccd1;
+    border-bottom: 1px solid #c8ccd1;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+}
+
+.tab.active {
+    border-color: #a2a9b1;
+    border-bottom-color: #fff;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.01) 50%, rgba(0, 0, 0, 0.06) 100%);
+}
+
+
+.tab-content {
+    display: none;
+    background: #FFFFFF;
+    margin-top: 5px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* News specific - with max height */
+.tab-content.news {
+    max-height: 300px;
+    overflow: auto;
+}

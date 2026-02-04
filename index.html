@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="World Snapshot project aims to unify digital reality at the pixel level.">
+    <title>World Snapshot: Unifying Digital Reality at the Pixel Level</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 添加网站图标 -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23eef0f2'/%3E%3Ctext x='16' y='26' font-family='-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif' font-size='26' font-weight='500' text-anchor='middle' fill='%23202122'%3EW%3C/text%3E%3C/svg%3E">
+    <!-- 为 Safari 浏览器添加图标 -->
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23eef0f2'/%3E%3Ctext x='16' y='26' font-family='-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif' font-size='26' font-weight='500' text-anchor='middle' fill='%23202122'%3EW%3C/text%3E%3C/svg%3E">
+    <!-- 引用独立的 CSS 文件 -->
+    <link rel="stylesheet" href="./static/css/main.css">
+</head>
+<body>
+    
+    <header class="header">
+        <h1 class="header-title">World Snapshot Org</h1>
+        <div class="header-links">
+            <a href="#" class="header-link nav-page active" data-page="01_home.md">[Home]</a>
+            <a href="#" class="header-link nav-page" data-page="02_team.md">[Team]</a>
+            <a href="#" class="header-link nav-page" data-page="03_ranking.md">[WSM Ranking]</a>
+            <a href="https://github.com/World-Snapshot" class="header-link" target="_blank">[Github]</a>
+        </div>
+    </header>
+    
+
+
+    <div class="container" id="home">
+        <!-- Main Content Section (Markdown) -->
+        <section id="abstract" class="markdown-section"></section>
+    </div>
+
+    <footer>
+        <p>This website is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
+        <p>
+            This means you are free to borrow the <a href="https://github.com/World-Snapshot/world-snapshot.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+        </p>
+    </footer>
+
+    <script>
+        // Initialize markdown-it
+        const md = window.markdownit({
+            html: true,
+            linkify: true,
+            typographer: true,
+            highlight: function (str, lang) {
+                if (lang && hljs.getLanguage(lang)) {
+                    try {
+                        return hljs.highlight(str, { language: lang }).value;
+                    } catch (__) {}
+                }
+                return '';
+            }
+        });
+
+        // Load and render markdown content
+        async function loadMarkdownFile(filename) {
+            try {
+                const response = await fetch(filename);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const markdown = await response.text();
+                const element = document.getElementById('abstract');
+                if (element) {
+                    element.innerHTML = md.render(markdown);
+                }
+                // Re-add header links after rendering
+                addHeaderLinks();
+
+                // Fetch citation counts for any author elements
+                fetchCitationCounts();
+
+                // Execute any scripts that were rendered in the markdown
+                const scripts = element.querySelectorAll('script');
+                scripts.forEach(oldScript => {
+                    const newScript = document.createElement('script');
+                    // Copy all attributes
+                    Array.from(oldScript.attributes).forEach(attr => {
+                        newScript.setAttribute(attr.name, attr.value);
+                    });
+                    // Copy the script content
+                    newScript.textContent = oldScript.textContent;
+                    // Replace old script with new one to trigger execution
+                    oldScript.parentNode.replaceChild(newScript, oldScript);
+                });
+            } catch (error) {
+                console.error(`Error loading ${filename}:`, error);
+                const element = document.getElementById('abstract');
+                if (element) {
+                    element.innerHTML = `<p>Error loading content from ${filename}</p>`;
+                }
+            }
+        }
+
+        // Handle navigation clicks
+        function setupNavigation() {
+            const navLinks = document.querySelectorAll('.nav-page');
+            navLinks.forEach(link => {
+                link.addEventListener('click', async (e) => {
+                    e.preventDefault();
+
+                    // Update active state
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+
+                    // Load the corresponding markdown file
+                    const pageFile = link.getAttribute('data-page');
+                    await loadMarkdownFile(pageFile);
+                });
+            });
+        }
+
+        // Initial content loading
+        async function loadAndRenderContent() {
+            // Load default page (01_home.md)
+            await loadMarkdownFile('01_home.md');
+            
+            // 为标题添加锚点链接
+            addHeaderLinks();
+
+            // Smooth scrolling for sidebar navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        // 临时更新URL但不触发跳转
+                        history.replaceState(null, null, `#${targetId}`);
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // 延迟移除锚点，让跳转完成
+                        setTimeout(() => {
+                            history.replaceState(null, null, window.location.pathname);
+                        }, 200);
+
+                        // If sidebar is not locked, hide it after navigation
+                        if (CONFIG.autoHideSidebar && !sidebar.classList.contains('locked')) {
+                            sidebar.classList.remove('active');
+                        }
+                    }
+                });
+            });
+
+            // 检查URL中的锚点并跳转
+            setTimeout(() => {
+                if (window.location.hash) {
+                    const element = document.getElementById(window.location.hash.substring(1));
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }, 100);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // 强制跳转到title位置
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'auto' });
+            }, 100);
+
+            // Setup navigation
+            setupNavigation();
+
+            // Load and render default markdown content
+            loadAndRenderContent();
+            
+            // Sidebar animation
+            setTimeout(() => {
+                const sidebar = document.querySelector('.sidebar');
+                if (sidebar) {
+                    sidebar.classList.add('active');
+                    if (CONFIG.autoHideSidebar) {
+                        setTimeout(() => {
+                            if (!sidebar.classList.contains('locked')) {
+                                sidebar.classList.remove('active');
+                            }
+                        }, 1000);
+                    }
+                }
+            }, 100);
+        });
+
+        // Lock button functionality
+        const lockButton = document.querySelector('.lock-button');
+        const sidebar = document.querySelector('.sidebar');
+
+        if (lockButton && sidebar) {
+            lockButton.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-lock-open')) {
+                    icon.classList.remove('fa-lock-open');
+                    icon.classList.add('fa-lock');
+                    sidebar.classList.add('locked');
+                } else {
+                    icon.classList.remove('fa-lock');
+                    icon.classList.add('fa-lock-open');
+                    sidebar.classList.remove('locked');
+                    sidebar.classList.remove('active');
+                }
+            });
+        }
+
+        // Configuration for auto-collapse feature
+        const CONFIG = {
+            autoCollapse: false,  // Set to true to enable auto-collapse, false to disable
+            autoHideSidebar: false  // Set to true to auto-hide sidebar, false to keep it visible
+        };
+
+        // Sidebar section toggle
+        document.querySelectorAll('.nav-section-title').forEach(title => {
+            title.addEventListener('click', (e) => {
+                if (CONFIG.autoCollapse) {
+                    const section = title.closest('.nav-section');
+                    section.classList.toggle('collapsed');
+                }
+            });
+        });
+
+
+        // 格式化数字为简略形式 (31422 -> 31k)
+        function formatNumber(num, short = false) {
+            if (!short) return num;
+            const n = parseInt(num.replace(/,/g, ''), 10);
+            if (isNaN(n)) return num;
+            if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+            if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+            return num;
+        }
+
+        // 获取 Google Scholar 引用数的函数
+        // 用法: <span data-gscholar="https://scholar.google.com/citations?user=XXXXX">Loading...</span>
+        // 简略模式: <span data-gscholar="..." data-gscholar-short="true">Loading...</span>
+        async function fetchCitationCounts() {
+            const elements = document.querySelectorAll('[data-gscholar]');
+
+            // 多个代理服务备选
+            const proxies = [
+                (url) => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+                (url) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+                (url) => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`
+            ];
+
+            for (const el of elements) {
+                const scholarUrl = el.dataset.gscholar;
+                const useShort = el.dataset.gscholarShort === 'true';
+                let success = false;
+
+                for (const getProxyUrl of proxies) {
+                    if (success) break;
+
+                    try {
+                        const proxyUrl = getProxyUrl(scholarUrl);
+                        const response = await fetch(proxyUrl);
+                        const html = await response.text();
+
+                        // 解析 HTML 获取引用数（在 gsc_rsb_std 类的元素中）
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, 'text/html');
+                        const citationElements = doc.querySelectorAll('.gsc_rsb_std');
+
+                        if (citationElements.length >= 1) {
+                            const totalCitations = citationElements[0].textContent;
+                            const hIndex = citationElements.length >= 3 ? citationElements[2].textContent : 'N/A';
+                            const i10Index = citationElements.length >= 5 ? citationElements[4].textContent : 'N/A';
+
+                            el.textContent = formatNumber(totalCitations, useShort);
+                            el.title = `Total Citations: ${totalCitations}, h-index: ${hIndex}, i10-index: ${i10Index}`;
+
+                            // 添加点击跳转
+                            if (!el.closest('a')) {
+                                el.style.cursor = 'pointer';
+                                el.onclick = () => window.open(scholarUrl, '_blank');
+                            }
+                            success = true;
+                        }
+                    } catch (error) {
+                        console.warn('Proxy failed, trying next...', error);
+                    }
+                }
+
+                if (!success) {
+                    el.textContent = 'N/A';
+                    console.error('All proxies failed for:', scholarUrl);
+                }
+            }
+        }
+
+        // 为标题添加锚点链接的函数
+        function addHeaderLinks() {
+            // 生成slug的函数
+            function generateSlug(text) {
+                return text
+                    .toLowerCase()
+                    .replace(/[^\w\s-]/g, '') // 移除特殊字符
+                    .replace(/\s+/g, '-')     // 空格替换为连字符
+                    .replace(/-+/g, '-')      // 多个连字符合并为一个
+                    .trim('-');               // 移除首尾连字符
+            }
+
+            // 为所有标题添加ID和链接
+            const headers = document.querySelectorAll('.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6, .html-section h1, .html-section h2, .html-section h3, .html-section h4, .html-section h5, .html-section h6');
+            
+            headers.forEach(header => {
+                const text = header.textContent;
+                const slug = generateSlug(text);
+                
+                // 设置ID
+                header.id = slug;
+                
+                // 创建链接元素
+                const link = document.createElement('a');
+                link.href = `#${slug}`;
+                link.className = 'header-link';
+                link.innerHTML = '#';
+                
+                // 添加点击事件处理
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    history.pushState(null, null, `#${slug}`);
+                    header.scrollIntoView({ behavior: 'smooth' });
+                });
+                
+                // 将链接插入到标题中
+                header.appendChild(link);
+            });
+        }
+
+    </script>
+</body>
+</html>
